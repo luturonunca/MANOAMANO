@@ -81,13 +81,23 @@ for line in file:
     col.append('#3ADF00')
     continue
 #print col
-#lat = [8.571246,8.615729]
-#lon = [-71.076297,-71.655986]
+lat_ciu = [8.59742,8.618826,8.252547,8.747436]
+lon_ciu = [-71.144328,-71.648842,-71.829042,-70.920552]
+ciudades = ['Merida','El Vigia', 'Bailadores', 'Mucuchies'] 
 x,y= m_mrd(lon,lat)
-#m_mrd.plot(x,y,'o',markersize=10,markerfacecolor=col,label='Productores mano a mano\nenero 2014')
+x1,y1 = m_mrd(lon_ciu,lat_ciu)
+
+m_mrd.plot(x1,y1,'ko',markersize=15)
+plt.text(x1[0]-7500,y1[0]-9000,ciudades[0],fontweight='bold')
+plt.text(x1[1]-9000,y1[1]-9000,ciudades[1],fontweight='bold')
+plt.text(x1[2]-13000,y1[2]-9000,ciudades[2],fontweight='bold')
+plt.text(x1[3]+5000,y1[3]-5000,ciudades[3],fontweight='bold')
+
 #lg = plt.legend(loc='lower left', fontsize=16, numpoints=1)
 #lg.get_frame().set_alpha(.8) # A little transparency
 for i in range(len(x)):
   m_mrd.plot(x[i],y[i],'o',markersize=10,markerfacecolor=col[i])
+
+
 
 plt.show()
