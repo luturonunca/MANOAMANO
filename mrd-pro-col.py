@@ -1,6 +1,9 @@
 # -*- coding: ISO-8859-1 -*-
 import shapefile
 import numpy as np
+import matplotlib
+from matplotlib import rc
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 import sys
@@ -37,6 +40,37 @@ agx, agy = m_mrd(aglonlat[:, 0], aglonlat[:, 1])
 plt.fill(agx, agy, cMRD, ec='none', alpha=.4)
 
 
+#################################################################
+################# Puntos de referencias##########################
+#################################################################
+########### dibuja puntos en las poblacones importantes##########
+#################################################################
+
+#parametros
+lat_ciu = [8.59742,8.618826,8.252547,8.747436]
+lon_ciu = [-71.144328,-71.648842,-71.829042,-70.920552]
+ciudades = ['Merida','El Vigia', 'Bailadores', 'Mucuchies']
+x1,y1 = m_mrd(lon_ciu,lat_ciu)
+#aqui se dibuja los circulos
+
+m_mrd.plot(x1,y1,'ko',markersize=15)
+
+rc('text',usetex=True)
+rc('text.latex', preamble='\usepackage{color}')
+
+#aqui el nombre
+
+plt.text(x1[0]-7500,y1[0]-9000,ciudades[0],color='#173B0B',fontweight='bold')
+plt.text(x1[1]-9000,y1[1]-9000,ciudades[1],color='#173B0B',fontweight='bold')
+plt.text(x1[2]-13000,y1[2]-9000,ciudades[2],color='#173B0B',fontweight='bold')
+plt.text(x1[3]+5000,y1[3]-5000,ciudades[3],color='#173B0B',fontweight='bold')
+
+
+
+#############################################################################
+#############################################################################
+
+#ahora dibuja los puntos, al final para que queden arriba de todo
 
 
 lat = []
